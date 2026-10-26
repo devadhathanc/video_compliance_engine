@@ -1,0 +1,31 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Environment and sensitive keys
+.env
+.env.*
+!.env.example
+
+# Temporary media files
+*.mp4
+*.m4a
+*.webm
+temp_*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
