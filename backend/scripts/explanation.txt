@@ -1,0 +1,17 @@
+Brand Guardian AI - Knowledge Base & Pipeline Architecture
+
+1. What We Did (The AWS Code Logic)
+The script index_documents.py performs an ETL (Extract, Transform, Load) procedure for AWS:
+
+Extract: Finds policy & regulatory PDF documents (e.g., FTC Influencer Guide, YouTube Ad Specs).
+Transform: Parses and chunks the documents with RecursiveCharacterTextSplitter for optimal context retrieval.
+Load & Sync: Uploads source PDFs to Amazon S3 (s3://{AWS_S3_BUCKET}/knowledge_base/) and triggers an ingestion sync job in AWS Bedrock Knowledge Base.
+
+2. Execution Architecture
+- Video Ingestion: yt-dlp downloads the YouTube video.
+- S3 Storage: Video uploaded to Amazon S3.
+- Audio Speech-to-Text: Amazon Transcribe converts spoken words into a timestamped transcript.
+- Visual OCR: Amazon Rekognition extracts text detected on-screen (disclaimers, fine print, text overlays).
+- Retrieval: Amazon Bedrock Knowledge Base retrieves relevant compliance rules.
+- Reasoning: Google Gemini evaluates speech + visual text against retrieved regulatory rules.
+- Delivery: FastAPI & AWS Lambda expose the pipeline for real-time and serverless auditing.
